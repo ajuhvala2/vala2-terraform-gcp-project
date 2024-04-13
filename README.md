@@ -130,6 +130,11 @@ o	Changes made to internal networking settings.
 
 ![alt text](image.png)
 
+1.	A finding is either generated from Security Command Center (and can also use Cloud Logging) and sent to a Pubsub topic
+2.	The Filter Cloud Function first can optionally run the finding through a series of Rego policies ( defined policies)  that will automatically mark the finding as a false positive and auto-close it.
+3.	If the finding isn’t valid for your environment, it is sent to the Router Function, which is configured by YAML to send the finding on to the correct auto-remediation function that you have enabled.
+4.	The auto-remediation Cloud Functions then take action to fix the problem addressed with the finding.
+
 
 ### Identity and Access Management (IAM) Escalation:
 
